@@ -15,9 +15,9 @@ import java.util.stream.IntStream;
 public class DatabaseLoader implements ApplicationRunner {
 
     @Autowired
-    public DatabaseLoader(PostRepository postRepository) {
+    public DatabaseLoader( PostRepository postRepository1) {
+        this.postRepository = postRepository1;
 
-        this.postRepository = postRepository;
     }
     private final String[] templates = {
             "Smart Home %s", "Mobile %s - For When You're On he Go", "The %s - Your New Favorite Accessory"};
