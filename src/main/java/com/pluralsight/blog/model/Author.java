@@ -16,13 +16,23 @@ public class Author {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    @OneToMany
+    private List<Post> posts ;
+
+
     private String firstname;
     private String lastname;
+
+    @JsonIgnore
     private String username;
+
+    @JsonIgnore
     private String password;
 
     public Author() {
         super();
+        posts = new ArrayList<>();
     }
 
     public Author(String username, String firstname, String lastname, String password) {
@@ -32,6 +42,8 @@ public class Author {
         this.username = username;
         setPassword(password);
     }
+
+
 
     public void setPassword(String password) {
          this.password = PASSWORD_ENCODER.encode(password);
@@ -69,6 +81,23 @@ public class Author {
         return password;
     }
 
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+
+    public void setPosts(List<Post> posts) {
+        this.posts = posts;
+    }
+
+    public String getFirstname() {
+        return firstname;
+    }
+
+    public void setFirstname(String firstname) {
+        this.firstname = firstname;
+    }
+
     @Override
     public boolean equals(Object obj) {
         Author inputAuthor = (Author)obj;
@@ -85,10 +114,12 @@ public class Author {
     }
 
     public List<Post> getPosts() {
-        return null;
+
+        return posts;
     }
 
     public void addPost(Post post) {
-        return;
+
+        this.posts.add(post);
     }
 }
