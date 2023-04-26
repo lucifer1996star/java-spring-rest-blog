@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @RepositoryRestResource(exported = false)
-@Component
+
 public interface AuthorRepository extends JpaRepository<Author ,Long> {
 
     }
